@@ -1,24 +1,21 @@
 import { Meta, StoryObj } from "@storybook/react";
-import AddOnOption from "./AddOnOption";
+import AddOnOption, { OptionType } from "./AddOnOption";
 
 export default {
   component: AddOnOption,
   title: "Components/AddOnOption",
-  decorators: [
-    (Story) => (
-      <div className="bg-purple">
-        <Story />
-      </div>
-    ),
-  ],
 } as Meta;
 
 type Story = StoryObj<typeof AddOnOption>;
 
-export const Active: Story = {
+export const Unselected: Story = {
   args: {
-    step: 1,
-    title: "Your Info",
-    isActive: true,
+    checked: false,
+    id: "online",
+    title: "Online service",
+    subtitle: "Access to multiplayer games",
+    price: 10,
+    handleClick: (id: OptionType, value: boolean) =>
+      console.log(`${id}: ${value}`),
   },
 };

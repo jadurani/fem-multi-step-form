@@ -1,25 +1,43 @@
+"use client";
+
+import iconCheckmark from "@assets/icons/icon-checkmark.svg";
+import Image from "next/image";
+
+export type OptionType = "online" | "storage" | "profile";
+
 interface Props {
-  step: number;
+  checked: boolean;
+  id: OptionType;
   title: string;
-  isActive?: boolean;
+  subtitle: string;
+  price: number;
+  handleClick: (id: OptionType, value: boolean) => void;
 }
 
-const AddOnOption = ({ step, title, isActive = false }: Props) => {
+const AddOnOption = ({
+  checked,
+  id,
+  title,
+  subtitle,
+  price,
+  handleClick,
+}: Props) => {
+  const isChecked = checked;
+
   return (
-    <label className="flex gap-4 items-center">
+    <button
+      onClick={() => handleClick(id, !isChecked)}
+      className={`flex gap-4 p-6 items-center rounded-md border border-grey-light hover:border-purple ${isChecked ? "bg-grey-veryLight" : ""}`}>
       <span
-        className={`${isActive ? "text-denim bg-skyBlue" : "border border-white text-white bg-transparent"} font-bold h-8 w-8 rounded-full flex items-center justify-center`}>
-        {step}
+        className={`inline-flex items-center justify-center h-[20px] w-[20px] rounded-md border ${isChecked ? "bg-purple" : "border-grey-light"}`}>
+        <Image src={iconCheckmark} alt="" />
       </span>
-      <span className="hidden md:block leading-tight">
-        <span className="block uppercase text-lightBlue text-body2">
-          step {step}
-        </span>
-        <span className="block uppercase text-white text-body1 font-bold tracking-wide">
-          {title}
-        </span>
+      <span className="flex-grow text-start">
+        <span className="block text-denim font-medium">{title}</span>
+        <span className="block text-grey text-[14px]">{subtitle}</span>
       </span>
-    </label>
+      <span className="text-[14px] text-purple">+${price}/yr</span>
+    </button>
   );
 };
 
