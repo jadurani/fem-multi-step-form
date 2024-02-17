@@ -27,7 +27,7 @@ const AddOnOption = ({
   return (
     <button
       onClick={() => handleClick(id, !isChecked)}
-      className={`flex gap-4 p-6 items-center rounded-md border border-grey-light hover:border-purple ${isChecked ? "bg-grey-veryLight" : ""}`}>
+      className={`flex gap-4 p-6 items-center rounded-md border border-grey-light hover:border-purple ${isChecked ? "bg-grey-veryLight border-purple" : ""}`}>
       <span
         className={`inline-flex items-center justify-center h-[20px] w-[20px] rounded-md border ${isChecked ? "bg-purple" : "border-grey-light"}`}>
         <Image src={iconCheckmark} alt="" />

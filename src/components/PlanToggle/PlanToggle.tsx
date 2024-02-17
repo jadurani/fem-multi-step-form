@@ -1,5 +1,7 @@
+export type PlanDuration = "monthly" | "yearly";
+
 interface Props {
-  value: "monthly" | "yearly";
+  value: PlanDuration;
 }
 
 const PlanToggle = ({ value }: Props) => {
