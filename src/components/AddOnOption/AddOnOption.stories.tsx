@@ -1,3 +1,4 @@
+import { useArgs } from "@storybook/preview-api";
 import { Meta, StoryObj } from "@storybook/react";
 import AddOnOption, { OptionType } from "./AddOnOption";
 
@@ -17,5 +18,21 @@ export const Unselected: Story = {
     price: 10,
     handleClick: (id: OptionType, value: boolean) =>
       console.log(`${id}: ${value}`),
+  },
+  render: function Render(args) {
+    const [{ checked }, updateArgs] = useArgs();
+
+    function onChange(id: OptionType, checked: boolean) {
+      console.log(id, checked);
+      updateArgs({ checked });
+    }
+
+    return (
+      <AddOnOption
+        {...args}
+        checked={checked}
+        handleClick={(id, checked) => onChange(id, checked)}
+      />
+    );
   },
 };
