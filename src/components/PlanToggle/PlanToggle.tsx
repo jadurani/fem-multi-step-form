@@ -2,16 +2,20 @@ export type PlanDuration = "monthly" | "yearly";
 
 interface Props {
   value: PlanDuration;
+  handleToggle: (value: PlanDuration) => void;
 }
 
-const PlanToggle = ({ value }: Props) => {
+const PlanToggle = ({ value, handleToggle }: Props) => {
   return (
     <div className="bg-grey-veryLight p-3 flex items-center justify-center gap-5 font-medium rounded-md">
       <span
         className={`capitalize ${value === "monthly" ? "text-denim" : "text-grey"}`}>
         monthly
       </span>
-      <button>
+      <button
+        onClick={() =>
+          handleToggle(value === "monthly" ? "yearly" : "monthly")
+        }>
         <svg
           className={value === "monthly" ? "" : "-scale-x-100"}
           width="38"
