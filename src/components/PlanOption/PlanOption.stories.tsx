@@ -1,3 +1,4 @@
+import { useArgs } from "@storybook/preview-api";
 import { Meta, StoryObj } from "@storybook/react";
 import PlanOption, { PlanOptionType } from "./PlanOption";
 
@@ -21,5 +22,21 @@ export const Arcade: Story = {
     id: "arcade",
     handleClick: (id: PlanOptionType, value: boolean) =>
       console.log(`${id}: ${value}`),
+  },
+  render: function Render(args) {
+    const [{ checked }, updateArgs] = useArgs();
+
+    function onChange(id: PlanOptionType, checked: boolean) {
+      console.log(id, checked);
+      updateArgs({ checked });
+    }
+
+    return (
+      <PlanOption
+        {...args}
+        checked={checked}
+        handleClick={(id, checked) => onChange(id, checked)}
+      />
+    );
   },
 };

@@ -42,7 +42,7 @@ const PlanOption = ({ checked, id, duration, handleClick }: Props) => {
 
   return (
     <button
-      onClick={() => handleClick(id, checked)}
+      onClick={() => handleClick(id, !checked)}
       className={`py-3 px-4 flex items-center gap-4 md:h-44 w-full md:flex-col md:items-start md:justify-between rounded-md border border-grey-light hover:border-purple ${checked ? "bg-grey-veryLight border-purple" : ""}`}>
       <Image src={DICT_IMAGE_SRC[id]} alt="" />
       <span className="text-start">
