@@ -41,7 +41,7 @@ const InputField = ({ type, value, onChange }: Props) => {
   };
 
   return (
-    <div className="pb-6 relative">
+    <div className="py-1 relative">
       <label className="text-denim text-[14px] my-4">{INPUT_LABEL[type]}</label>
       <p className="absolute text-[14px] top-0 right-1 pl-4 text-error font-bold">
         {error}
