@@ -3,10 +3,13 @@ import PlanToggle from "@components/PlanToggle/PlanToggle";
 import { SelectPlanProps } from "@lib/types";
 import { useState } from "react";
 
-const FormSelectPlan = () => {
+const FormSelectPlan = ({
+  selectedPlan = null,
+  duration = "monthly",
+}: SelectPlanProps) => {
   const [formData, setFormData] = useState<SelectPlanProps>({
-    selectedPlan: null,
-    duration: "monthly",
+    selectedPlan,
+    duration,
   });
 
   return (
