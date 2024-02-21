@@ -1,4 +1,4 @@
-import { MultiStepFormState, PersonalInfo, PickAddOnProps, PlanDuration, PlanOptionType } from "./types";
+import { MultiStepFormState, PersonalInfo, PickAddOnProps, PlanDuration, PlanOptionType, ValidFormStep } from "./types";
 
 export const initialState: MultiStepFormState = {
   activeStep: 1,
@@ -50,13 +50,13 @@ export function multiStepFormReducer(state: MultiStepFormState, action: ActionTy
     case 'FORM_STEP_BACKWARD': {
       return {
         ...state,
-        activeStep: state.activeStep - 1
+        activeStep: state.activeStep - 1 as ValidFormStep
       }
     }
     case 'FORM_STEP_FORWARD': {
       return {
         ...state,
-        activeStep: state.activeStep + 1
+        activeStep: state.activeStep + 1 as ValidFormStep
       }
     }
     case 'UPDATE_PERSONAL_INFO': {
