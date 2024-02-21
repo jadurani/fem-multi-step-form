@@ -1,6 +1,7 @@
+import { PlanOptionType } from "@lib/types";
 import { useArgs } from "@storybook/preview-api";
 import { Meta, StoryObj } from "@storybook/react";
-import PlanOption, { PlanOptionType } from "./PlanOption";
+import PlanOption from "./PlanOption";
 
 export default {
   component: PlanOption,
