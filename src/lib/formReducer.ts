@@ -1,6 +1,6 @@
 import { MultiStepFormState, PersonalInfo, PickAddOnProps, PlanDuration, PlanOptionType } from "./types";
 
-export const initialFormState: MultiStepFormState = {
+export const initialState: MultiStepFormState = {
   activeStep: 1,
   name: "",
   email: "",
@@ -45,7 +45,7 @@ export type ActionTypes = UpdateStepForward
   | UpdatePlanDuration
   | UpdateAddOnOption;
 
-export function messengerReducer(state: MultiStepFormState, action: ActionTypes) {
+export function multiStepFormReducer(state: MultiStepFormState, action: ActionTypes): MultiStepFormState {
   switch (action.type) {
     case 'FORM_STEP_BACKWARD': {
       return {
