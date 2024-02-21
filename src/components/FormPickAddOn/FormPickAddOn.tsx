@@ -1,12 +1,9 @@
 import AddOnOption from "@components/AddOnOption/AddOnOption";
+import { PickAddOnProps } from "@lib/types";
 import { useState } from "react";
 
-const FormPickAddOn = () => {
-  const [formData, setFormData] = useState({
-    online: false,
-    storage: false,
-    profile: false,
-  });
+const FormPickAddOn = (props: PickAddOnProps) => {
+  const [formData, setFormData] = useState(props);
 
   return (
     <div>

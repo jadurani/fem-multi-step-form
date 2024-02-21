@@ -1,17 +1,8 @@
 import iconAdvanced from "@assets/icons/icon-advanced.svg";
 import iconArcade from "@assets/icons/icon-arcade.svg";
 import iconPro from "@assets/icons/icon-pro.svg";
-import { PlanDuration } from "@components/PlanToggle/PlanToggle";
+import { PlanDuration, PlanOptionProps, PlanOptionType } from "@lib/types";
 import Image from "next/image";
-
-export type PlanOptionType = "arcade" | "advanced" | "pro";
-
-interface Props {
-  checked: boolean;
-  id: PlanOptionType;
-  duration: PlanDuration;
-  handleClick: (id: PlanOptionType, value: boolean) => void;
-}
 
 const MONTHLY_PLAN_PRICES: Record<PlanOptionType, number> = {
   arcade: 9,
@@ -36,7 +27,12 @@ const DURATION_ABBV: Record<PlanDuration, string> = {
   yearly: "yr",
 };
 
-const PlanOption = ({ checked, id, duration, handleClick }: Props) => {
+const PlanOption = ({
+  checked,
+  id,
+  duration,
+  handleClick,
+}: PlanOptionProps) => {
   const price =
     duration === "monthly" ? MONTHLY_PLAN_PRICES[id] : YEARLY_PLAN_PRICES[id];
 

@@ -1,11 +1,6 @@
 import InputField from "@components/InputField/InputField";
+import { PersonalInfo } from "@lib/types";
 import { useState } from "react";
-
-interface PersonalInfo {
-  name: string;
-  email: string;
-  phone: string;
-}
 
 const FormPersonalInfo = () => {
   const [formData, setFormData] = useState<PersonalInfo>({

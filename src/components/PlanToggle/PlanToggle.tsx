@@ -1,11 +1,6 @@
-export type PlanDuration = "monthly" | "yearly";
+import { PlanToggleProps } from "@lib/types";
 
-interface Props {
-  value: PlanDuration;
-  handleToggle: (value: PlanDuration) => void;
-}
-
-const PlanToggle = ({ value, handleToggle }: Props) => {
+const PlanToggle = ({ value, handleToggle }: PlanToggleProps) => {
   return (
     <div className="bg-grey-veryLight p-3 flex items-center justify-center gap-5 font-medium rounded-md">
       <span

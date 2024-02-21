@@ -1,10 +1,6 @@
-interface Props {
-  children: string;
-  color: "denim" | "purple";
-  handleClick: () => void;
-}
+import { ButtonProps } from "@lib/types";
 
-function Button({ children, color, handleClick }: Props) {
+function Button({ children, color, handleClick }: ButtonProps) {
   return (
     <button
       onClick={handleClick}

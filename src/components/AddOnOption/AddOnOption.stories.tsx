@@ -1,6 +1,7 @@
+import { OptionType } from "@lib/types";
 import { useArgs } from "@storybook/preview-api";
 import { Meta, StoryObj } from "@storybook/react";
-import AddOnOption, { OptionType } from "./AddOnOption";
+import AddOnOption from "./AddOnOption";
 
 export default {
   component: AddOnOption,
