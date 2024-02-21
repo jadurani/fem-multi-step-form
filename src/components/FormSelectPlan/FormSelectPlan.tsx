@@ -1,11 +1,7 @@
-import PlanOption, { PlanOptionType } from "@components/PlanOption/PlanOption";
-import PlanToggle, { PlanDuration } from "@components/PlanToggle/PlanToggle";
+import PlanOption from "@components/PlanOption/PlanOption";
+import PlanToggle from "@components/PlanToggle/PlanToggle";
+import { SelectPlanProps } from "@lib/types";
 import { useState } from "react";
-
-interface SelectPlanProps {
-  selectedPlan: PlanOptionType | null;
-  duration: PlanDuration;
-}
 
 const FormSelectPlan = () => {
   const [formData, setFormData] = useState<SelectPlanProps>({
