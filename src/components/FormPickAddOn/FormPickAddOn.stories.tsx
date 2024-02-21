@@ -8,4 +8,10 @@ export default {
 
 type Story = StoryObj<typeof FormPickAddOn>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  args: {
+    online: false,
+    storage: false,
+    profile: false,
+  },
+};
