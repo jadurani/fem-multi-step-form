@@ -1,6 +1,7 @@
 import { PlanOptionType } from "@components/PlanOption/PlanOption";
 
 export type PlanDuration = "monthly" | "yearly";
+export type OptionType = "online" | "storage" | "profile";
 
 export interface PersonalInfo {
   name: string;
@@ -29,4 +30,13 @@ export interface PlanOptionProps {
   id: PlanOptionType;
   duration: PlanDuration;
   handleClick: (id: PlanOptionType, value: boolean) => void;
+}
+
+export interface AddOnOptionProps {
+  checked: boolean;
+  id: OptionType;
+  title: string;
+  subtitle: string;
+  price: number;
+  handleClick: (id: OptionType, value: boolean) => void;
 }

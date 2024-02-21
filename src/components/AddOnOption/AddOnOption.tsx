@@ -1,18 +1,6 @@
-"use client";
-
 import iconCheckmark from "@assets/icons/icon-checkmark.svg";
+import { AddOnOptionProps } from "@lib/types";
 import Image from "next/image";
-
-export type OptionType = "online" | "storage" | "profile";
-
-interface Props {
-  checked: boolean;
-  id: OptionType;
-  title: string;
-  subtitle: string;
-  price: number;
-  handleClick: (id: OptionType, value: boolean) => void;
-}
 
 const AddOnOption = ({
   checked,
@@ -21,7 +9,7 @@ const AddOnOption = ({
   subtitle,
   price,
   handleClick,
-}: Props) => {
+}: AddOnOptionProps) => {
   return (
     <button
       onClick={() => handleClick(id, !checked)}
