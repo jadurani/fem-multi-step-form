@@ -1,10 +1,8 @@
 import iconAdvanced from "@assets/icons/icon-advanced.svg";
 import iconArcade from "@assets/icons/icon-arcade.svg";
 import iconPro from "@assets/icons/icon-pro.svg";
-import { PlanDuration, PlanOptionProps } from "@lib/types";
+import { PlanDuration, PlanOptionProps, PlanOptionType } from "@lib/types";
 import Image from "next/image";
-
-export type PlanOptionType = "arcade" | "advanced" | "pro";
 
 const MONTHLY_PLAN_PRICES: Record<PlanOptionType, number> = {
   arcade: 9,

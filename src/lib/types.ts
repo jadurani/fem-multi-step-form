@@ -1,7 +1,6 @@
-import { PlanOptionType } from "@components/PlanOption/PlanOption";
-
 export type PlanDuration = "monthly" | "yearly";
 export type OptionType = "online" | "storage" | "profile";
+export type PlanOptionType = "arcade" | "advanced" | "pro";
 
 export interface PersonalInfo {
   name: string;
