@@ -2,6 +2,12 @@ export type PlanDuration = "monthly" | "yearly";
 export type OptionType = "online" | "storage" | "profile";
 export type PlanOptionType = "arcade" | "advanced" | "pro";
 
+export interface ButtonProps {
+  children: string;
+  color: "denim" | "purple";
+  handleClick: () => void;
+}
+
 export interface PersonalInfo {
   name: string;
   email: string;
