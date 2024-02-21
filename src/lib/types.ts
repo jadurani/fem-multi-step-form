@@ -1,6 +1,7 @@
 export type PlanDuration = "monthly" | "yearly";
 export type OptionType = "online" | "storage" | "profile";
 export type PlanOptionType = "arcade" | "advanced" | "pro";
+export type ValidFormStep = 1 | 2 | 3 | 4;
 
 export interface ButtonProps {
   children: string;
@@ -45,3 +46,7 @@ export interface AddOnOptionProps {
   price: number;
   handleClick: (id: OptionType, value: boolean) => void;
 }
+
+export type MultiStepFormState = {
+  activeStep: ValidFormStep;
+} & PersonalInfo & SelectPlanProps & PickAddOnProps;
