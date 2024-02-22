@@ -1,13 +1,22 @@
 import InputField from "@components/InputField/InputField";
+import { initialState, multiStepFormReducer } from "@lib/formReducer";
 import { PersonalInfo } from "@lib/types";
-import { useState } from "react";
+import { useReducer, useState } from "react";
 
 const FormPersonalInfo = () => {
+  const [state, dispatch] = useReducer(multiStepFormReducer, initialState);
   const [formData, setFormData] = useState<PersonalInfo>({
     name: "",
     email: "",
     phone: "",
   });
+
+  const handleBlur = (value: string) => {
+    dispatch({
+      type: "UPDATE_PERSONAL_INFO",
+      ...formData,
+    });
+  };
 
   return (
     <div>
@@ -20,20 +29,23 @@ const FormPersonalInfo = () => {
 
       <InputField
         type="text"
-        value={formData.phone}
-        onChange={(value) => setFormData({ ...formData, phone: value })}
+        value={formData.name}
+        onChange={(value) => setFormData({ ...formData, name: value })}
+        onBlur={handleBlur}
       />
 
       <InputField
         type="email"
         value={formData.email}
         onChange={(value) => setFormData({ ...formData, email: value })}
+        onBlur={handleBlur}
       />
 
       <InputField
         type="tel"
         value={formData.phone}
         onChange={(value) => setFormData({ ...formData, phone: value })}
+        onBlur={handleBlur}
       />
     </div>
   );

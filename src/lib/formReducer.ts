@@ -2,6 +2,7 @@ import { MultiStepFormState, PersonalInfo, PickAddOnProps, PlanDuration, PlanOpt
 
 export const initialState: MultiStepFormState = {
   activeStep: 1,
+  hasError: false,
   name: "",
   email: "",
   phone: "",
@@ -46,6 +47,7 @@ export type ActionTypes = UpdateStepForward
   | UpdateAddOnOption;
 
 export function multiStepFormReducer(state: MultiStepFormState, action: ActionTypes): MultiStepFormState {
+  console.log(action)
   switch (action.type) {
     case 'FORM_STEP_BACKWARD': {
       return {

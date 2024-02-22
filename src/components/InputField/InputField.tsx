@@ -6,6 +6,7 @@ interface Props {
   type: InputFieldType;
   value: string;
   onChange: (value: string) => void;
+  onBlur: (value: string) => void;
 }
 
 const isInvalid = (type: InputFieldType, value: string): boolean => {
@@ -27,7 +28,7 @@ const PLACEHOLDER = {
   tel: "e.g. +1 234 567 890",
 };
 
-const InputField = ({ type, value, onChange }: Props) => {
+const InputField = ({ type, value, onChange, onBlur }: Props) => {
   const [error, setError] = useState<string | null>(null);
 
   const handleBlur = (value: string) => {
@@ -37,6 +38,7 @@ const InputField = ({ type, value, onChange }: Props) => {
       setError("Invalid format");
     } else {
       setError(null);
+      onBlur(value);
     }
   };
 
