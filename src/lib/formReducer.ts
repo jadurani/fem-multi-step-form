@@ -2,7 +2,7 @@ import { MultiStepFormState, PersonalInfo, PickAddOnProps, PlanDuration, PlanOpt
 
 export const initialState: MultiStepFormState = {
   activeStep: 1,
-  hasError: false,
+  errors: null,
   name: "",
   email: "",
   phone: "",
