@@ -1,12 +1,11 @@
-import { useState } from "react";
-
 export type InputFieldType = "email" | "text" | "tel";
 
 interface Props {
   type: InputFieldType;
   value: string;
+  error?: string;
   onChange: (value: string) => void;
-  onBlur: (value: string) => void;
+  onBlur: (error: string | null) => void;
 }
 
 const isInvalid = (type: InputFieldType, value: string): boolean => {
@@ -28,17 +27,14 @@ const PLACEHOLDER = {
   tel: "e.g. +1 234 567 890",
 };
 
-const InputField = ({ type, value, onChange, onBlur }: Props) => {
-  const [error, setError] = useState<string | null>(null);
-
+const InputField = ({ type, value, error = "", onChange, onBlur }: Props) => {
   const handleBlur = (value: string) => {
     if (value.trim() === "") {
-      setError("This field is required");
+      onBlur("This field is required");
     } else if (isInvalid(type, value)) {
-      setError("Invalid format");
+      onBlur("Invalid format");
     } else {
-      setError(null);
-      onBlur(value);
+      onBlur(null);
     }
   };
 

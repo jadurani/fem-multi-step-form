@@ -4,21 +4,22 @@ import { PersonalInfo } from "@lib/types";
 import { useContext } from "react";
 
 const FormPersonalInfo = () => {
-  // const [state, dispatch] = useReducer(multiStepFormReducer, initialState);
-  // const [formData, setFormData] = useState<PersonalInfo>({
-  //   name: "",
-  //   email: "",
-  //   phone: "",
-  // });
-
   const formData = useContext(FormContext);
   const dispatch = useContext(FormDispatchContext);
 
-  const handleBlur = (newInfo: Partial<PersonalInfo>) => {
+  const handleChange = (newInfo: Partial<PersonalInfo>) => {
     dispatch({
       type: "UPDATE_PERSONAL_INFO",
       ...formData,
       ...newInfo,
+    });
+  };
+
+  const handleBlur = (fieldName: string, error: string | null) => {
+    dispatch({
+      type: "SET_ERRORS",
+      fieldName,
+      error,
     });
   };
 
@@ -34,22 +35,25 @@ const FormPersonalInfo = () => {
       <InputField
         type="text"
         value={formData.name}
-        onChange={(value) => handleBlur({ name: value })}
-        onBlur={(value) => handleBlur({ name: value })}
+        error={formData.errors?.get("name")}
+        onChange={(value) => handleChange({ name: value })}
+        onBlur={(value) => handleBlur("name", value)}
       />
 
       <InputField
         type="email"
         value={formData.email}
-        onChange={(value) => handleBlur({ email: value })}
-        onBlur={(value) => handleBlur({ email: value })}
+        error={formData.errors?.get("email")}
+        onChange={(value) => handleChange({ email: value })}
+        onBlur={(value) => handleBlur("email", value)}
       />
 
       <InputField
         type="tel"
         value={formData.phone}
-        onChange={(value) => handleBlur({ phone: value })}
-        onBlur={(value) => handleBlur({ phone: value })}
+        error={formData.errors?.get("phone")}
+        onChange={(value) => handleChange({ phone: value })}
+        onBlur={(value) => handleBlur("phone", value)}
       />
     </div>
   );

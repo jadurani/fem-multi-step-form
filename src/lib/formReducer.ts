@@ -39,12 +39,19 @@ export type UpdateAddOnOption = {
   type: 'UPDATE_ADD_ON',
 } & PickAddOnProps;
 
+export type SetErrors = {
+  type: 'SET_ERRORS',
+  fieldName: string;
+  error: string | null;
+}
+
 export type ActionTypes = UpdateStepForward
   | UpdateStepBackward
   | UpdatePersonalInfo
   | UpdateSelectedPlan
   | UpdatePlanDuration
-  | UpdateAddOnOption;
+  | UpdateAddOnOption
+  | SetErrors;
 
 export function multiStepFormReducer(state: MultiStepFormState, action: ActionTypes): MultiStepFormState {
   console.log(action)
@@ -89,6 +96,23 @@ export function multiStepFormReducer(state: MultiStepFormState, action: ActionTy
         online: state.online,
         storage: state.storage,
         profile: state.profile,
+      }
+    }
+
+    case 'SET_ERRORS': {
+      const { fieldName, error } = action;
+      const errors = new Map<string, string>(state.errors);
+
+      // remove from errors map
+      if (!error) {
+        errors.delete(fieldName)
+      } else {
+        errors.set(fieldName, error)
+      }
+
+      return {
+        ...state,
+        errors
       }
     }
 

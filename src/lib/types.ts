@@ -49,5 +49,5 @@ export interface AddOnOptionProps {
 
 export type MultiStepFormState = {
   activeStep: ValidFormStep;
-  hasError: boolean;
+  errors: Map<string, any> | null;
 } & PersonalInfo & SelectPlanProps & PickAddOnProps;

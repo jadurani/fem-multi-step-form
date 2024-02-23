@@ -41,6 +41,7 @@ export default function Home() {
             <FormSummary />
           </div>
 
+          <div>DISABLED: {`${Boolean(state.errors)}`}</div>
           <Button
             color="denim"
             handleClick={() => dispatch({ type: "FORM_STEP_BACKWARD" })}>
