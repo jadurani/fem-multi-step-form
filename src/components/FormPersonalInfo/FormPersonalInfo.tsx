@@ -1,6 +1,7 @@
 import InputField from "@components/InputField/InputField";
 import { FormContext, FormDispatchContext } from "@lib/formContext";
 import { PersonalInfo } from "@lib/types";
+import { validateForm } from "@lib/validate";
 import { useContext } from "react";
 
 const FormPersonalInfo = () => {
@@ -23,8 +24,17 @@ const FormPersonalInfo = () => {
     });
   };
 
+  const handleFormBlur = (ev: React.FormEvent<HTMLFormElement>) => {
+    alert("handleFormBlur");
+    const formErrors = validateForm(ev);
+    dispatch({
+      type: "SET_FORM_ERRORS",
+      formErrors,
+    });
+  };
+
   return (
-    <div>
+    <form onBlur={handleFormBlur}>
       <div className="text-denim font-bold text-h4 md:text-h3">
         Personal Info
       </div>
@@ -55,7 +65,7 @@ const FormPersonalInfo = () => {
         onChange={(value) => handleChange({ phone: value })}
         onBlur={(value) => handleBlur("phone", value)}
       />
-    </div>
+    </form>
   );
 };
 

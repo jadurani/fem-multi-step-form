@@ -45,24 +45,38 @@ export type SetErrors = {
   error: string | null;
 }
 
+export type SetFormErrors = {
+  type: 'SET_FORM_ERRORS',
+  formErrors: Array<{ fieldName: string; error: string | null }>
+}
+
 export type ActionTypes = UpdateStepForward
   | UpdateStepBackward
   | UpdatePersonalInfo
   | UpdateSelectedPlan
   | UpdatePlanDuration
   | UpdateAddOnOption
-  | SetErrors;
+  | SetErrors
+  | SetFormErrors;
 
 export function multiStepFormReducer(state: MultiStepFormState, action: ActionTypes): MultiStepFormState {
   console.log(action)
   switch (action.type) {
     case 'FORM_STEP_BACKWARD': {
+      if (state.errors) {
+        return { ...state }
+      }
+
       return {
         ...state,
         activeStep: state.activeStep - 1 as ValidFormStep
       }
     }
     case 'FORM_STEP_FORWARD': {
+      if (state.errors) {
+        return { ...state }
+      }
+
       return {
         ...state,
         activeStep: state.activeStep + 1 as ValidFormStep
@@ -108,6 +122,27 @@ export function multiStepFormReducer(state: MultiStepFormState, action: ActionTy
         errors.delete(fieldName)
       } else {
         errors.set(fieldName, error)
+      }
+
+      return {
+        ...state,
+        errors
+      }
+    }
+
+    case 'SET_FORM_ERRORS': {
+      const newErrors = action.formErrors;
+      const errors = new Map<string, any>(state.errors);
+
+      // remove from errors map
+      for (const [fieldName, newError] of Object.entries(newErrors)) {
+
+        if (!newError) {
+          errors.delete(fieldName)
+          continue;
+        }
+
+        errors.set(fieldName, newError)
       }
 
       return {
