@@ -1,4 +1,5 @@
 import iconCheckmark from "@assets/icons/icon-checkmark.svg";
+import { ADD_ON_PRICES, DURATION_ABBV } from "@lib/form.constant";
 import { AddOnOptionProps } from "@lib/types";
 import Image from "next/image";
 
@@ -7,9 +8,11 @@ const AddOnOption = ({
   id,
   title,
   subtitle,
-  price,
+  duration,
   handleClick,
 }: AddOnOptionProps) => {
+  const price = ADD_ON_PRICES[duration][id];
+
   return (
     <button
       onClick={() => handleClick(id, !checked)}
@@ -22,7 +25,9 @@ const AddOnOption = ({
         <span className="block text-denim font-medium">{title}</span>
         <span className="block text-grey text-[14px]">{subtitle}</span>
       </span>
-      <span className="text-[14px] text-purple">+${price}/yr</span>
+      <span className="text-[14px] text-purple">
+        +${price}/{DURATION_ABBV[duration]}
+      </span>
     </button>
   );
 };

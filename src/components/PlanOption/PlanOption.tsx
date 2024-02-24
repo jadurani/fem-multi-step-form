@@ -1,31 +1,11 @@
-import iconAdvanced from "@assets/icons/icon-advanced.svg";
-import iconArcade from "@assets/icons/icon-arcade.svg";
-import iconPro from "@assets/icons/icon-pro.svg";
-import { PlanDuration, PlanOptionProps, PlanOptionType } from "@lib/types";
+import {
+  DICT_IMAGE_SRC,
+  DURATION_ABBV,
+  MONTHLY_PLAN_PRICES,
+  YEARLY_PLAN_PRICES,
+} from "@lib/form.constant";
+import { PlanOptionProps } from "@lib/types";
 import Image from "next/image";
-
-const MONTHLY_PLAN_PRICES: Record<PlanOptionType, number> = {
-  arcade: 9,
-  advanced: 12,
-  pro: 15,
-};
-
-const YEARLY_PLAN_PRICES: Record<PlanOptionType, number> = {
-  arcade: 90,
-  advanced: 120,
-  pro: 150,
-};
-
-const DICT_IMAGE_SRC: Record<PlanOptionType, any> = {
-  arcade: iconArcade,
-  advanced: iconAdvanced,
-  pro: iconPro,
-};
-
-const DURATION_ABBV: Record<PlanDuration, string> = {
-  monthly: "mo",
-  yearly: "yr",
-};
 
 const PlanOption = ({
   checked,

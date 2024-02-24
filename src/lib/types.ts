@@ -44,7 +44,7 @@ export interface AddOnOptionProps {
   id: OptionType;
   title: string;
   subtitle: string;
-  price: number;
+  duration: PlanDuration;
   handleClick: (id: OptionType, value: boolean) => void;
 }
 

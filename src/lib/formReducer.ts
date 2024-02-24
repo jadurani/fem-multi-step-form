@@ -1,4 +1,4 @@
-import { MultiStepFormState, PersonalInfo, PickAddOnProps, PlanDuration, PlanOptionType, ValidFormStep } from "./types";
+import { MultiStepFormState, OptionType, PersonalInfo, PlanDuration, PlanOptionType, ValidFormStep } from "./types";
 
 export const initialState: MultiStepFormState = {
   activeStep: 1,
@@ -37,7 +37,7 @@ export type UpdatePlanDuration = {
 
 export type UpdateAddOnOption = {
   type: 'UPDATE_ADD_ON',
-} & PickAddOnProps;
+} & { [K in OptionType]?: boolean };
 
 export type SetErrors = {
   type: 'SET_ERRORS',
@@ -99,9 +99,9 @@ export function multiStepFormReducer(state: MultiStepFormState, action: ActionTy
     case 'UPDATE_ADD_ON': {
       return {
         ...state,
-        online: state.online,
-        storage: state.storage,
-        profile: state.profile,
+        ...("online" in action && { online: action.online }),
+        ...("storage" in action && { storage: action.storage }),
+        ...("profile" in action && { profile: action.profile }),
       }
     }
     case 'UPDATE_PLAN_DURATION': {
