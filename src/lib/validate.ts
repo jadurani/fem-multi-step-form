@@ -34,29 +34,3 @@ export const validateForm = (ev: React.FormEvent<HTMLFormElement>) => {
 
   return errors
 };
-
-
-
-// export const validateForm = (el: HTMLFormElement) => {
-//   let isValid = true;
-//   const inputs = el.querySelectorAll('input');
-
-//   inputs.forEach(input => {
-//     const { type, value } = input;
-
-//     // Perform validation checks based on input type
-//     if (
-//       (type === "email" && !/^\S+@\S+\.\S+$/.test(value)) ||
-//       (type === "tel" && !/^\+?\d{10,12}$/.test(value))
-//     ) {
-//       // Add error styling or other feedback for invalid input
-//       input.classList.add('error');
-//       isValid = false;
-//     } else {
-//       // Remove error styling if input is valid
-//       input.classList.remove('error');
-//     }
-//   });
-
-//   return isValid;
-// };

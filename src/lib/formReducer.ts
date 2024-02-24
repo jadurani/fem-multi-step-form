@@ -135,14 +135,13 @@ export function multiStepFormReducer(state: MultiStepFormState, action: ActionTy
       const errors = new Map<string, any>(state.errors);
 
       // remove from errors map
-      for (const [fieldName, newError] of Object.entries(newErrors)) {
-
-        if (!newError) {
+      for (const { fieldName, error } of newErrors) {
+        if (!error) {
           errors.delete(fieldName)
           continue;
         }
 
-        errors.set(fieldName, newError)
+        errors.set(fieldName, error)
       }
 
       return {

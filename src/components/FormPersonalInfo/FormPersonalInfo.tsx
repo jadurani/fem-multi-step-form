@@ -25,7 +25,8 @@ const FormPersonalInfo = () => {
   };
 
   const handleFormBlur = (ev: React.FormEvent<HTMLFormElement>) => {
-    alert("handleFormBlur");
+    ev.preventDefault();
+
     const formErrors = validateForm(ev);
     dispatch({
       type: "SET_FORM_ERRORS",
@@ -34,7 +35,7 @@ const FormPersonalInfo = () => {
   };
 
   return (
-    <form onBlur={handleFormBlur}>
+    <form onSubmit={handleFormBlur} noValidate>
       <div className="text-denim font-bold text-h4 md:text-h3">
         Personal Info
       </div>
@@ -43,6 +44,8 @@ const FormPersonalInfo = () => {
       </div>
 
       <InputField
+        required={true}
+        name="name"
         type="text"
         value={formData.name}
         error={formData.errors?.get("name")}
@@ -51,6 +54,8 @@ const FormPersonalInfo = () => {
       />
 
       <InputField
+        required={true}
+        name="email"
         type="email"
         value={formData.email}
         error={formData.errors?.get("email")}
@@ -59,12 +64,15 @@ const FormPersonalInfo = () => {
       />
 
       <InputField
+        required={true}
+        name="phone"
         type="tel"
         value={formData.phone}
         error={formData.errors?.get("phone")}
         onChange={(value) => handleChange({ phone: value })}
         onBlur={(value) => handleBlur("phone", value)}
       />
+      <button type="submit">next</button>
     </form>
   );
 };
