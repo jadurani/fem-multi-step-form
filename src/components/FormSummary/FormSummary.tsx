@@ -1,9 +1,11 @@
 import Button from "@components/Button/Button";
+import FormFinished from "@components/FormFinished/FormFinished";
 import { ADD_ON_PRICES, DURATION_ABBV, PLAN_PRICES } from "@lib/form.constant";
 import { FormContext, FormDispatchContext } from "@lib/formContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 const FormSummary = () => {
+  const [submitted, setSubmitted] = useState(false);
   const { duration, selectedPlan, online, storage, profile } =
     useContext(FormContext);
   const dispatch = useContext(FormDispatchContext);
@@ -15,6 +17,11 @@ const FormSummary = () => {
   const profilePrice = profile ? ADD_ON_PRICES[duration]["profile"] : 0;
 
   const total = selectedPlanPrice + onlinePrice + storagePrice + profilePrice;
+
+  if (submitted) {
+    return <FormFinished />;
+  }
+
   return (
     <div>
       <div className="text-denim font-bold text-h4 md:text-h3">
@@ -85,7 +92,7 @@ const FormSummary = () => {
         Go Back
       </Button>
 
-      <Button color="purple" handleClick={() => {}}>
+      <Button color="purple" handleClick={() => setSubmitted(true)}>
         Confirm
       </Button>
     </div>
