@@ -59,12 +59,17 @@ const FormPickAddOn = (props: PickAddOnProps) => {
 
       <Button
         color="denim"
-        handleClick={() => dispatch({ type: "FORM_STEP_BACKWARD" })}>
+        handleClick={() =>
+          dispatch({ type: "UPDATE_FORM_STEP", activeStep: 2 })
+        }>
         Previous
       </Button>
+
       <Button
         color="denim"
-        handleClick={() => dispatch({ type: "FORM_STEP_FORWARD" })}>
+        handleClick={() =>
+          dispatch({ type: "UPDATE_FORM_STEP", activeStep: 4 })
+        }>
         Next
       </Button>
     </div>

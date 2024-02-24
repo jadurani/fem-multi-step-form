@@ -38,18 +38,6 @@ export default function Home() {
           <div hidden={activeStep != 4}>
             <FormSummary />
           </div>
-
-          {/* <div>DISABLED: {`${Boolean(state.errors)}`}</div> */}
-          {/* <Button
-            color="denim"
-            handleClick={() => dispatch({ type: "FORM_STEP_BACKWARD" })}>
-            Previous
-          </Button>
-          <Button
-            color="denim"
-            handleClick={() => dispatch({ type: "FORM_STEP_FORWARD" })}>
-            Next
-          </Button> */}
         </main>
       </FormDispatchContext.Provider>
     </FormContext.Provider>

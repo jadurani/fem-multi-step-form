@@ -30,7 +30,13 @@ const FormSummary = () => {
             <span className="capitalize text-denim font-medium block my-1">
               <span>{selectedPlan}</span> <span>({duration})</span>
             </span>
-            <a className="text-grey">Change</a>
+            <button
+              className="text-grey hover:text-purple cursor"
+              onClick={() =>
+                dispatch({ type: "UPDATE_FORM_STEP", activeStep: 2 })
+              }>
+              Change
+            </button>
           </div>
           <div className="font-bold text-denim">
             ${selectedPlanPrice}/{durationAbbv}
@@ -73,13 +79,14 @@ const FormSummary = () => {
 
       <Button
         color="denim"
-        handleClick={() => dispatch({ type: "FORM_STEP_BACKWARD" })}>
-        Previous
+        handleClick={() =>
+          dispatch({ type: "UPDATE_FORM_STEP", activeStep: 3 })
+        }>
+        Go Back
       </Button>
-      <Button
-        color="denim"
-        handleClick={() => dispatch({ type: "FORM_STEP_FORWARD" })}>
-        Next
+
+      <Button color="purple" handleClick={() => {}}>
+        Confirm
       </Button>
     </div>
   );

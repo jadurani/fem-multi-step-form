@@ -3,6 +3,25 @@ import iconArcade from "@assets/icons/icon-arcade.svg";
 import iconPro from "@assets/icons/icon-pro.svg";
 import { OptionType, PlanDuration, PlanOptionType } from "./types";
 
+export const FORM_STEPS = [
+  {
+    step: 1,
+    title: "Your Info",
+  },
+  {
+    step: 2,
+    title: "Select Plan",
+  },
+  {
+    step: 3,
+    title: "Add-Ons",
+  },
+  {
+    step: 4,
+    title: "Summary",
+  },
+];
+
 export const MONTHLY_PLAN_PRICES: Record<PlanOptionType, number> = {
   arcade: 9,
   advanced: 12,
@@ -29,15 +48,15 @@ export const PLAN_PRICES: Record<PlanDuration, Record<PlanOptionType, number>> =
 }
 
 export const ADD_ON_PRICES: Record<PlanDuration, Record<OptionType, number>> = {
-  "monthly": {
-    "online": 1,
-    "storage": 2,
-    "profile": 2
+  monthly: {
+    online: 1,
+    storage: 2,
+    profile: 2
   },
-  "yearly": {
-    "online": 10,
-    "storage": 20,
-    "profile": 20
+  yearly: {
+    online: 10,
+    storage: 20,
+    profile: 20
   }
 }
 

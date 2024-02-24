@@ -13,6 +13,11 @@ export const initialState: MultiStepFormState = {
   profile: false,
 }
 
+export type UpdateFormStep = {
+  type: 'UPDATE_FORM_STEP',
+  activeStep: ValidFormStep
+};
+
 export type UpdateStepForward = {
   type: 'FORM_STEP_FORWARD',
 };
@@ -50,7 +55,8 @@ export type SetFormErrors = {
   formErrors: Array<{ fieldName: string; error: string | null }>
 }
 
-export type ActionTypes = UpdateStepForward
+export type ActionTypes = UpdateFormStep
+  | UpdateStepForward
   | UpdateStepBackward
   | UpdatePersonalInfo
   | UpdateSelectedPlan
@@ -62,6 +68,13 @@ export type ActionTypes = UpdateStepForward
 export function multiStepFormReducer(state: MultiStepFormState, action: ActionTypes): MultiStepFormState {
   console.log(action)
   switch (action.type) {
+    case 'UPDATE_FORM_STEP': {
+      return {
+        ...state,
+        activeStep: action.activeStep
+      }
+    }
+
     case 'FORM_STEP_BACKWARD': {
       if (state.errors?.size) {
         return { ...state }

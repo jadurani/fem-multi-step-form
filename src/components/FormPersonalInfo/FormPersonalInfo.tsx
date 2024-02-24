@@ -33,7 +33,7 @@ const FormPersonalInfo = () => {
       type: "SET_FORM_ERRORS",
       formErrors,
     });
-    dispatch({ type: "FORM_STEP_FORWARD" });
+    dispatch({ type: "UPDATE_FORM_STEP", activeStep: 2 });
   };
 
   return (
