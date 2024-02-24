@@ -75,9 +75,11 @@ const FormPersonalInfo = () => {
         onBlur={(value) => handleBlur("phone", value)}
       />
 
-      <Button type="submit" color="denim">
-        Next
-      </Button>
+      <div className="flex justify-end">
+        <Button type="submit" color="denim">
+          Next
+        </Button>
+      </div>
     </form>
   );
 };

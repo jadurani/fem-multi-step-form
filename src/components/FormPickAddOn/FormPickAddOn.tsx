@@ -38,21 +38,23 @@ const FormPickAddOn = (props: PickAddOnProps) => {
         </div>
       ))}
 
-      <Button
-        style="clear"
-        handleClick={() =>
-          dispatch({ type: "UPDATE_FORM_STEP", activeStep: 2 })
-        }>
-        Go Back
-      </Button>
+      <div className="flex justify-between">
+        <Button
+          style="clear"
+          handleClick={() =>
+            dispatch({ type: "UPDATE_FORM_STEP", activeStep: 2 })
+          }>
+          Go Back
+        </Button>
 
-      <Button
-        color="denim"
-        handleClick={() =>
-          dispatch({ type: "UPDATE_FORM_STEP", activeStep: 4 })
-        }>
-        Next
-      </Button>
+        <Button
+          color="denim"
+          handleClick={() =>
+            dispatch({ type: "UPDATE_FORM_STEP", activeStep: 4 })
+          }>
+          Next
+        </Button>
+      </div>
     </div>
   );
 };

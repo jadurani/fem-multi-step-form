@@ -84,17 +84,19 @@ const FormSummary = () => {
         </div>
       </div>
 
-      <Button
-        style="clear"
-        handleClick={() =>
-          dispatch({ type: "UPDATE_FORM_STEP", activeStep: 3 })
-        }>
-        Go Back
-      </Button>
+      <div className="flex justify-between">
+        <Button
+          style="clear"
+          handleClick={() =>
+            dispatch({ type: "UPDATE_FORM_STEP", activeStep: 3 })
+          }>
+          Go Back
+        </Button>
 
-      <Button color="purple" handleClick={() => setSubmitted(true)}>
-        Confirm
-      </Button>
+        <Button color="purple" handleClick={() => setSubmitted(true)}>
+          Confirm
+        </Button>
+      </div>
     </div>
   );
 };

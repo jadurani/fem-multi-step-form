@@ -70,21 +70,23 @@ const FormSelectPlan = () => {
         />
       </div>
 
-      <Button
-        style="clear"
-        handleClick={() =>
-          dispatch({ type: "UPDATE_FORM_STEP", activeStep: 1 })
-        }>
-        Go Back
-      </Button>
+      <div className="flex justify-between">
+        <Button
+          style="clear"
+          handleClick={() =>
+            dispatch({ type: "UPDATE_FORM_STEP", activeStep: 1 })
+          }>
+          Go Back
+        </Button>
 
-      <Button
-        color="denim"
-        handleClick={() =>
-          dispatch({ type: "UPDATE_FORM_STEP", activeStep: 3 })
-        }>
-        Next
-      </Button>
+        <Button
+          color="denim"
+          handleClick={() =>
+            dispatch({ type: "UPDATE_FORM_STEP", activeStep: 3 })
+          }>
+          Next
+        </Button>
+      </div>
     </div>
   );
 };
