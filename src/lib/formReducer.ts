@@ -63,7 +63,7 @@ export function multiStepFormReducer(state: MultiStepFormState, action: ActionTy
   console.log(action)
   switch (action.type) {
     case 'FORM_STEP_BACKWARD': {
-      if (state.errors) {
+      if (state.errors?.size) {
         return { ...state }
       }
 
@@ -73,7 +73,7 @@ export function multiStepFormReducer(state: MultiStepFormState, action: ActionTy
       }
     }
     case 'FORM_STEP_FORWARD': {
-      if (state.errors) {
+      if (state.errors?.size) {
         return { ...state }
       }
 

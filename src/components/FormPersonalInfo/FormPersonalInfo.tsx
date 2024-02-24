@@ -1,3 +1,4 @@
+import Button from "@components/Button/Button";
 import InputField from "@components/InputField/InputField";
 import { FormContext, FormDispatchContext } from "@lib/formContext";
 import { PersonalInfo } from "@lib/types";
@@ -24,7 +25,7 @@ const FormPersonalInfo = () => {
     });
   };
 
-  const handleFormBlur = (ev: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (ev: React.FormEvent<HTMLFormElement>) => {
     ev.preventDefault();
 
     const formErrors = validateForm(ev);
@@ -32,10 +33,11 @@ const FormPersonalInfo = () => {
       type: "SET_FORM_ERRORS",
       formErrors,
     });
+    dispatch({ type: "FORM_STEP_FORWARD" });
   };
 
   return (
-    <form onSubmit={handleFormBlur} noValidate>
+    <form onSubmit={handleSubmit} noValidate>
       <div className="text-denim font-bold text-h4 md:text-h3">
         Personal Info
       </div>
@@ -72,7 +74,10 @@ const FormPersonalInfo = () => {
         onChange={(value) => handleChange({ phone: value })}
         onBlur={(value) => handleBlur("phone", value)}
       />
-      <button type="submit">next</button>
+
+      <Button type="submit" color="denim">
+        Next
+      </Button>
     </form>
   );
 };

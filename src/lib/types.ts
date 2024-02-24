@@ -4,9 +4,10 @@ export type PlanOptionType = "arcade" | "advanced" | "pro";
 export type ValidFormStep = 1 | 2 | 3 | 4;
 
 export interface ButtonProps {
+  type?: 'submit' | 'button' | 'reset'
   children: string;
   color: "denim" | "purple";
-  handleClick: () => void;
+  handleClick?: () => void;
 }
 
 export interface PersonalInfo {

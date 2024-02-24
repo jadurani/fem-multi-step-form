@@ -1,6 +1,5 @@
 "use client";
 
-import Button from "@components/Button/Button";
 import FormPersonalInfo from "@components/FormPersonalInfo/FormPersonalInfo";
 import FormPickAddOn from "@components/FormPickAddOn/FormPickAddOn";
 import FormSelectPlan from "@components/FormSelectPlan/FormSelectPlan";
@@ -41,8 +40,8 @@ export default function Home() {
             <FormSummary />
           </div>
 
-          <div>DISABLED: {`${Boolean(state.errors)}`}</div>
-          <Button
+          {/* <div>DISABLED: {`${Boolean(state.errors)}`}</div> */}
+          {/* <Button
             color="denim"
             handleClick={() => dispatch({ type: "FORM_STEP_BACKWARD" })}>
             Previous
@@ -51,7 +50,7 @@ export default function Home() {
             color="denim"
             handleClick={() => dispatch({ type: "FORM_STEP_FORWARD" })}>
             Next
-          </Button>
+          </Button> */}
         </main>
       </FormDispatchContext.Provider>
     </FormContext.Provider>
