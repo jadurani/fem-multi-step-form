@@ -1,5 +1,6 @@
 import AddOnOption from "@components/AddOnOption/AddOnOption";
 import Button from "@components/Button/Button";
+import { ADD_ONS } from "@lib/form.constant";
 import { FormContext, FormDispatchContext } from "@lib/formContext";
 import { OptionType, PickAddOnProps } from "@lib/types";
 import { useContext } from "react";
@@ -24,38 +25,18 @@ const FormPickAddOn = (props: PickAddOnProps) => {
         Add-ons help enhance your gaming experience.
       </div>
 
-      <div className="py-2">
-        <AddOnOption
-          checked={formData.online}
-          id="online"
-          title="Online service"
-          subtitle="Access to multiplayer games"
-          duration={formData.duration}
-          handleClick={setFormData}
-        />
-      </div>
-
-      <div className="py-2">
-        <AddOnOption
-          checked={formData.storage}
-          id="storage"
-          title="Larger storage"
-          subtitle="Extra 1TB of cloud save"
-          duration={formData.duration}
-          handleClick={setFormData}
-        />
-      </div>
-
-      <div className="py-2">
-        <AddOnOption
-          checked={formData.profile}
-          id="profile"
-          title="Customizable profile"
-          subtitle="Custom theme on your profile"
-          duration={formData.duration}
-          handleClick={setFormData}
-        />
-      </div>
+      {ADD_ONS.map(({ id, title, subtitle }, idx) => (
+        <div className="py-2" key={idx}>
+          <AddOnOption
+            checked={formData[id]}
+            id={id}
+            title={title}
+            subtitle={subtitle}
+            duration={formData.duration}
+            handleClick={setFormData}
+          />
+        </div>
+      ))}
 
       <Button
         color="denim"

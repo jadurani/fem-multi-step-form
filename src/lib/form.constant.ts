@@ -22,6 +22,30 @@ export const FORM_STEPS = [
   },
 ];
 
+export type AddOnType = {
+  id: OptionType,
+  title: string;
+  subtitle: string;
+}
+
+export const ADD_ONS: Array<AddOnType> = [
+  {
+    id: "online",
+    title: "Online service",
+    subtitle: "Access to multiplayer games"
+  },
+  {
+    id: "storage",
+    title: "Larger storage",
+    subtitle: "Extra 1TB of cloud save"
+  },
+  {
+    id: "profile",
+    title: "Customizable profile",
+    subtitle: "Custom theme on your profile"
+  },
+]
+
 export const MONTHLY_PLAN_PRICES: Record<PlanOptionType, number> = {
   arcade: 9,
   advanced: 12,
