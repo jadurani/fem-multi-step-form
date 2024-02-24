@@ -2,13 +2,10 @@ import Button from "@components/Button/Button";
 import PlanOption from "@components/PlanOption/PlanOption";
 import PlanToggle from "@components/PlanToggle/PlanToggle";
 import { FormContext, FormDispatchContext } from "@lib/formContext";
-import { PlanDuration, PlanOptionType, SelectPlanProps } from "@lib/types";
+import { PlanDuration, PlanOptionType } from "@lib/types";
 import { useContext } from "react";
 
-const FormSelectPlan = ({
-  selectedPlan = null,
-  duration = "monthly",
-}: SelectPlanProps) => {
+const FormSelectPlan = () => {
   const formData = useContext(FormContext);
   const dispatch = useContext(FormDispatchContext);
 

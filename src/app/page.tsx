@@ -11,8 +11,7 @@ import { useReducer } from "react";
 
 export default function Home() {
   const [state, dispatch] = useReducer(multiStepFormReducer, initialState);
-  const { activeStep, selectedPlan, duration, online, storage, profile } =
-    state;
+  const { activeStep, online, storage, profile } = state;
 
   return (
     <FormContext.Provider value={state}>
@@ -25,7 +24,7 @@ export default function Home() {
           </div>
 
           <div hidden={activeStep != 2}>
-            <FormSelectPlan selectedPlan={selectedPlan} duration={duration} />
+            <FormSelectPlan />
           </div>
 
           <div hidden={activeStep != 3}>
