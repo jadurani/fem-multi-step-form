@@ -5,8 +5,9 @@ export type ValidFormStep = 1 | 2 | 3 | 4;
 
 export interface ButtonProps {
   type?: 'submit' | 'button' | 'reset'
+  style?: 'clear' | 'filled'
   children: string;
-  color: "denim" | "purple";
+  color?: "denim" | "purple";
   handleClick?: () => void;
 }
 

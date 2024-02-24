@@ -39,11 +39,11 @@ const FormPickAddOn = (props: PickAddOnProps) => {
       ))}
 
       <Button
-        color="denim"
+        style="clear"
         handleClick={() =>
           dispatch({ type: "UPDATE_FORM_STEP", activeStep: 2 })
         }>
-        Previous
+        Go Back
       </Button>
 
       <Button

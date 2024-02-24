@@ -85,7 +85,7 @@ const FormSummary = () => {
       </div>
 
       <Button
-        color="denim"
+        style="clear"
         handleClick={() =>
           dispatch({ type: "UPDATE_FORM_STEP", activeStep: 3 })
         }>
