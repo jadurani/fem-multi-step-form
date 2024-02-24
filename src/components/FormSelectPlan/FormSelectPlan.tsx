@@ -1,16 +1,30 @@
+import Button from "@components/Button/Button";
 import PlanOption from "@components/PlanOption/PlanOption";
 import PlanToggle from "@components/PlanToggle/PlanToggle";
-import { SelectPlanProps } from "@lib/types";
-import { useState } from "react";
+import { FormContext, FormDispatchContext } from "@lib/formContext";
+import { PlanDuration, PlanOptionType, SelectPlanProps } from "@lib/types";
+import { useContext } from "react";
 
 const FormSelectPlan = ({
   selectedPlan = null,
   duration = "monthly",
 }: SelectPlanProps) => {
-  const [formData, setFormData] = useState<SelectPlanProps>({
-    selectedPlan,
-    duration,
-  });
+  const formData = useContext(FormContext);
+  const dispatch = useContext(FormDispatchContext);
+
+  const setFormData = (selectedPlan: PlanOptionType) => {
+    dispatch({
+      type: "UPDATE_SELECTED_PLAN",
+      selectedPlan,
+    });
+  };
+
+  const handleDurationToggle = (duration: PlanDuration) => {
+    dispatch({
+      type: "UPDATE_PLAN_DURATION",
+      duration,
+    });
+  };
 
   return (
     <div>
@@ -27,12 +41,7 @@ const FormSelectPlan = ({
           checked={formData.selectedPlan === "arcade"}
           id="arcade"
           duration={formData.duration}
-          handleClick={(id, value) =>
-            setFormData({
-              ...formData,
-              selectedPlan: id,
-            })
-          }
+          handleClick={(id, _) => setFormData(id)}
         />
       </div>
 
@@ -42,12 +51,7 @@ const FormSelectPlan = ({
           checked={formData.selectedPlan === "advanced"}
           id="advanced"
           duration={formData.duration}
-          handleClick={(id, value) =>
-            setFormData({
-              ...formData,
-              selectedPlan: id,
-            })
-          }
+          handleClick={(id, _) => setFormData(id)}
         />
       </div>
 
@@ -57,12 +61,7 @@ const FormSelectPlan = ({
           checked={formData.selectedPlan === "pro"}
           id="pro"
           duration={formData.duration}
-          handleClick={(id, value) =>
-            setFormData({
-              ...formData,
-              selectedPlan: id,
-            })
-          }
+          handleClick={(id, _) => setFormData(id)}
         />
       </div>
 
@@ -70,11 +69,20 @@ const FormSelectPlan = ({
       <div className="py-2">
         <PlanToggle
           value={formData.duration}
-          handleToggle={(value) =>
-            setFormData({ ...formData, duration: value })
-          }
+          handleToggle={handleDurationToggle}
         />
       </div>
+
+      <Button
+        color="denim"
+        handleClick={() => dispatch({ type: "FORM_STEP_BACKWARD" })}>
+        Previous
+      </Button>
+      <Button
+        color="denim"
+        handleClick={() => dispatch({ type: "FORM_STEP_FORWARD" })}>
+        Next
+      </Button>
     </div>
   );
 };

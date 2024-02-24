@@ -6,7 +6,7 @@ export const initialState: MultiStepFormState = {
   name: "",
   email: "",
   phone: "",
-  selectedPlan: null,
+  selectedPlan: "arcade",
   duration: "monthly",
   online: false,
   storage: false,
@@ -107,9 +107,7 @@ export function multiStepFormReducer(state: MultiStepFormState, action: ActionTy
     case 'UPDATE_PLAN_DURATION': {
       return {
         ...state,
-        online: state.online,
-        storage: state.storage,
-        profile: state.profile,
+        duration: action.duration,
       }
     }
 
