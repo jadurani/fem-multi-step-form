@@ -16,7 +16,7 @@ export const Unselected: Story = {
     id: "online",
     title: "Online service",
     subtitle: "Access to multiplayer games",
-    price: 10,
+    duration: "monthly",
     handleClick: (id: OptionType, value: boolean) =>
       console.log(`${id}: ${value}`),
   },
