@@ -72,12 +72,17 @@ const FormSelectPlan = () => {
 
       <Button
         color="denim"
-        handleClick={() => dispatch({ type: "FORM_STEP_BACKWARD" })}>
+        handleClick={() =>
+          dispatch({ type: "UPDATE_FORM_STEP", activeStep: 1 })
+        }>
         Previous
       </Button>
+
       <Button
         color="denim"
-        handleClick={() => dispatch({ type: "FORM_STEP_FORWARD" })}>
+        handleClick={() =>
+          dispatch({ type: "UPDATE_FORM_STEP", activeStep: 3 })
+        }>
         Next
       </Button>
     </div>

@@ -1,9 +1,11 @@
 import Button from "@components/Button/Button";
+import FormFinished from "@components/FormFinished/FormFinished";
 import { ADD_ON_PRICES, DURATION_ABBV, PLAN_PRICES } from "@lib/form.constant";
 import { FormContext, FormDispatchContext } from "@lib/formContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 const FormSummary = () => {
+  const [submitted, setSubmitted] = useState(false);
   const { duration, selectedPlan, online, storage, profile } =
     useContext(FormContext);
   const dispatch = useContext(FormDispatchContext);
@@ -15,6 +17,11 @@ const FormSummary = () => {
   const profilePrice = profile ? ADD_ON_PRICES[duration]["profile"] : 0;
 
   const total = selectedPlanPrice + onlinePrice + storagePrice + profilePrice;
+
+  if (submitted) {
+    return <FormFinished />;
+  }
+
   return (
     <div>
       <div className="text-denim font-bold text-h4 md:text-h3">
@@ -30,7 +37,13 @@ const FormSummary = () => {
             <span className="capitalize text-denim font-medium block my-1">
               <span>{selectedPlan}</span> <span>({duration})</span>
             </span>
-            <a className="text-grey">Change</a>
+            <button
+              className="text-grey hover:text-purple cursor"
+              onClick={() =>
+                dispatch({ type: "UPDATE_FORM_STEP", activeStep: 2 })
+              }>
+              Change
+            </button>
           </div>
           <div className="font-bold text-denim">
             ${selectedPlanPrice}/{durationAbbv}
@@ -73,13 +86,14 @@ const FormSummary = () => {
 
       <Button
         color="denim"
-        handleClick={() => dispatch({ type: "FORM_STEP_BACKWARD" })}>
-        Previous
+        handleClick={() =>
+          dispatch({ type: "UPDATE_FORM_STEP", activeStep: 3 })
+        }>
+        Go Back
       </Button>
-      <Button
-        color="denim"
-        handleClick={() => dispatch({ type: "FORM_STEP_FORWARD" })}>
-        Next
+
+      <Button color="purple" handleClick={() => setSubmitted(true)}>
+        Confirm
       </Button>
     </div>
   );

@@ -1,24 +1,6 @@
 import FormStep from "@components/FormStep/FormStep";
+import { FORM_STEPS } from "@lib/form.constant";
 import { ValidFormStep } from "@lib/types";
-
-const FORM_STEPS = [
-  {
-    step: 1,
-    title: "Your Info",
-  },
-  {
-    step: 2,
-    title: "Select Plan",
-  },
-  {
-    step: 3,
-    title: "Add-Ons",
-  },
-  {
-    step: 4,
-    title: "Summary",
-  },
-];
 
 interface Props {
   activeStep: ValidFormStep;
