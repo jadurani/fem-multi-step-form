@@ -1,4 +1,5 @@
 import FormStep from "@components/FormStep/FormStep";
+import { ValidFormStep } from "@lib/types";
 
 const FORM_STEPS = [
   {
@@ -20,7 +21,7 @@ const FORM_STEPS = [
 ];
 
 interface Props {
-  activeStep: 1 | 2 | 3 | 4;
+  activeStep: ValidFormStep;
 }
 
 const FormStepGroup = ({ activeStep }: Props) => {

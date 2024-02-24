@@ -1,16 +1,43 @@
+import Button from "@components/Button/Button";
 import InputField from "@components/InputField/InputField";
+import { FormContext, FormDispatchContext } from "@lib/formContext";
 import { PersonalInfo } from "@lib/types";
-import { useState } from "react";
+import { validateForm } from "@lib/validate";
+import { useContext } from "react";
 
 const FormPersonalInfo = () => {
-  const [formData, setFormData] = useState<PersonalInfo>({
-    name: "",
-    email: "",
-    phone: "",
-  });
+  const formData = useContext(FormContext);
+  const dispatch = useContext(FormDispatchContext);
+
+  const handleChange = (newInfo: Partial<PersonalInfo>) => {
+    dispatch({
+      type: "UPDATE_PERSONAL_INFO",
+      ...formData,
+      ...newInfo,
+    });
+  };
+
+  const handleBlur = (fieldName: string, error: string | null) => {
+    dispatch({
+      type: "SET_ERRORS",
+      fieldName,
+      error,
+    });
+  };
+
+  const handleSubmit = (ev: React.FormEvent<HTMLFormElement>) => {
+    ev.preventDefault();
+
+    const formErrors = validateForm(ev);
+    dispatch({
+      type: "SET_FORM_ERRORS",
+      formErrors,
+    });
+    dispatch({ type: "FORM_STEP_FORWARD" });
+  };
 
   return (
-    <div>
+    <form onSubmit={handleSubmit} noValidate>
       <div className="text-denim font-bold text-h4 md:text-h3">
         Personal Info
       </div>
@@ -19,23 +46,39 @@ const FormPersonalInfo = () => {
       </div>
 
       <InputField
+        required={true}
+        name="name"
         type="text"
-        value={formData.phone}
-        onChange={(value) => setFormData({ ...formData, phone: value })}
+        value={formData.name}
+        error={formData.errors?.get("name")}
+        onChange={(value) => handleChange({ name: value })}
+        onBlur={(value) => handleBlur("name", value)}
       />
 
       <InputField
+        required={true}
+        name="email"
         type="email"
         value={formData.email}
-        onChange={(value) => setFormData({ ...formData, email: value })}
+        error={formData.errors?.get("email")}
+        onChange={(value) => handleChange({ email: value })}
+        onBlur={(value) => handleBlur("email", value)}
       />
 
       <InputField
+        required={true}
+        name="phone"
         type="tel"
         value={formData.phone}
-        onChange={(value) => setFormData({ ...formData, phone: value })}
+        error={formData.errors?.get("phone")}
+        onChange={(value) => handleChange({ phone: value })}
+        onBlur={(value) => handleBlur("phone", value)}
       />
-    </div>
+
+      <Button type="submit" color="denim">
+        Next
+      </Button>
+    </form>
   );
 };
 

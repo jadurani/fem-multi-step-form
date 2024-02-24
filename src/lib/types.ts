@@ -1,11 +1,13 @@
 export type PlanDuration = "monthly" | "yearly";
 export type OptionType = "online" | "storage" | "profile";
 export type PlanOptionType = "arcade" | "advanced" | "pro";
+export type ValidFormStep = 1 | 2 | 3 | 4;
 
 export interface ButtonProps {
+  type?: 'submit' | 'button' | 'reset'
   children: string;
   color: "denim" | "purple";
-  handleClick: () => void;
+  handleClick?: () => void;
 }
 
 export interface PersonalInfo {
@@ -15,7 +17,7 @@ export interface PersonalInfo {
 }
 
 export interface SelectPlanProps {
-  selectedPlan: PlanOptionType | null;
+  selectedPlan: PlanOptionType;
   duration: PlanDuration;
 }
 
@@ -42,6 +44,11 @@ export interface AddOnOptionProps {
   id: OptionType;
   title: string;
   subtitle: string;
-  price: number;
+  duration: PlanDuration;
   handleClick: (id: OptionType, value: boolean) => void;
 }
+
+export type MultiStepFormState = {
+  activeStep: ValidFormStep;
+  errors: Map<string, any> | null;
+} & PersonalInfo & SelectPlanProps & PickAddOnProps;

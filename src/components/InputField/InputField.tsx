@@ -1,11 +1,15 @@
-import { useState } from "react";
+import { FocusEvent } from "react";
 
 export type InputFieldType = "email" | "text" | "tel";
 
 interface Props {
+  name: string;
+  required?: boolean;
   type: InputFieldType;
   value: string;
+  error?: string;
   onChange: (value: string) => void;
+  onBlur: (error: string | null) => void;
 }
 
 const isInvalid = (type: InputFieldType, value: string): boolean => {
@@ -27,16 +31,26 @@ const PLACEHOLDER = {
   tel: "e.g. +1 234 567 890",
 };
 
-const InputField = ({ type, value, onChange }: Props) => {
-  const [error, setError] = useState<string | null>(null);
+const InputField = ({
+  name,
+  type,
+  value,
+  required = false,
+  error = "",
+  onChange,
+  onBlur,
+}: Props) => {
+  const handleBlur = (e: FocusEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
 
-  const handleBlur = (value: string) => {
+    const value: string = e.target.value;
     if (value.trim() === "") {
-      setError("This field is required");
+      onBlur("This field is required");
     } else if (isInvalid(type, value)) {
-      setError("Invalid format");
+      onBlur("Invalid format");
     } else {
-      setError(null);
+      onBlur(null);
     }
   };
 
@@ -48,10 +62,12 @@ const InputField = ({ type, value, onChange }: Props) => {
       </p>
       <input
         className={`block w-full text-denim outline-none font-medium p-2 border rounded-md ${error ? "text-error border-error" : "border-grey-light hover:border-purple"}`}
+        name={name}
         type={type}
         value={value}
+        required={required}
         placeholder={PLACEHOLDER[type]}
-        onBlur={(e) => handleBlur(e.target.value)}
+        onBlur={handleBlur}
         onChange={(e) => onChange(e.target.value)}
       />
     </div>

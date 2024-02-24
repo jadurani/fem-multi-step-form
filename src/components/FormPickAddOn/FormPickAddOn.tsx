@@ -1,9 +1,19 @@
 import AddOnOption from "@components/AddOnOption/AddOnOption";
-import { PickAddOnProps } from "@lib/types";
-import { useState } from "react";
+import Button from "@components/Button/Button";
+import { FormContext, FormDispatchContext } from "@lib/formContext";
+import { OptionType, PickAddOnProps } from "@lib/types";
+import { useContext } from "react";
 
 const FormPickAddOn = (props: PickAddOnProps) => {
-  const [formData, setFormData] = useState(props);
+  const formData = useContext(FormContext);
+  const dispatch = useContext(FormDispatchContext);
+
+  const setFormData = (id: OptionType, value: boolean) => {
+    dispatch({
+      type: "UPDATE_ADD_ON",
+      [id]: value,
+    });
+  };
 
   return (
     <div>
@@ -20,10 +30,8 @@ const FormPickAddOn = (props: PickAddOnProps) => {
           id="online"
           title="Online service"
           subtitle="Access to multiplayer games"
-          price={1}
-          handleClick={(id, value) =>
-            setFormData({ ...formData, online: id === "online" && value })
-          }
+          duration={formData.duration}
+          handleClick={setFormData}
         />
       </div>
 
@@ -33,10 +41,8 @@ const FormPickAddOn = (props: PickAddOnProps) => {
           id="storage"
           title="Larger storage"
           subtitle="Extra 1TB of cloud save"
-          price={2}
-          handleClick={(id, value) =>
-            setFormData({ ...formData, storage: id === "storage" && value })
-          }
+          duration={formData.duration}
+          handleClick={setFormData}
         />
       </div>
 
@@ -46,12 +52,21 @@ const FormPickAddOn = (props: PickAddOnProps) => {
           id="profile"
           title="Customizable profile"
           subtitle="Custom theme on your profile"
-          price={2}
-          handleClick={(id, value) =>
-            setFormData({ ...formData, profile: id === "profile" && value })
-          }
+          duration={formData.duration}
+          handleClick={setFormData}
         />
       </div>
+
+      <Button
+        color="denim"
+        handleClick={() => dispatch({ type: "FORM_STEP_BACKWARD" })}>
+        Previous
+      </Button>
+      <Button
+        color="denim"
+        handleClick={() => dispatch({ type: "FORM_STEP_FORWARD" })}>
+        Next
+      </Button>
     </div>
   );
 };
