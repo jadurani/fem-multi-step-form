@@ -15,6 +15,19 @@ export const YEARLY_PLAN_PRICES: Record<PlanOptionType, number> = {
   pro: 150,
 };
 
+export const PLAN_PRICES: Record<PlanDuration, Record<PlanOptionType, number>> = {
+  monthly: {
+    arcade: 9,
+    advanced: 12,
+    pro: 15,
+  },
+  yearly: {
+    arcade: 90,
+    advanced: 120,
+    pro: 150,
+  },
+}
+
 export const ADD_ON_PRICES: Record<PlanDuration, Record<OptionType, number>> = {
   "monthly": {
     "online": 1,

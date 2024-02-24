@@ -17,7 +17,7 @@ export interface PersonalInfo {
 }
 
 export interface SelectPlanProps {
-  selectedPlan: PlanOptionType | null;
+  selectedPlan: PlanOptionType;
   duration: PlanDuration;
 }
 
