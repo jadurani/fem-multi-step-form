@@ -66,7 +66,6 @@ export type ActionTypes = UpdateFormStep
   | SetFormErrors;
 
 export function multiStepFormReducer(state: MultiStepFormState, action: ActionTypes): MultiStepFormState {
-  console.log(action)
   switch (action.type) {
     case 'UPDATE_FORM_STEP': {
       return {
