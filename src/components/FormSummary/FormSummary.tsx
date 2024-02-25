@@ -19,7 +19,11 @@ const FormSummary = () => {
   const total = selectedPlanPrice + onlinePrice + storagePrice + profilePrice;
 
   if (submitted) {
-    return <FormFinished />;
+    return (
+      <div className="h-[400px] px-4 lg:px-8 lg:h-full">
+        <FormFinished />
+      </div>
+    );
   }
 
   return (
@@ -84,7 +88,7 @@ const FormSummary = () => {
         </div>
       </div>
 
-      <div className="flex justify-between mt-auto">
+      <div className="fixed py-4 px-6 bottom-0 left-0 lg:static w-full flex justify-between mt-auto bg-white z-20">
         <Button
           style="clear"
           handleClick={() =>
