@@ -38,7 +38,7 @@ export default function Home() {
               <Image src={desktopBg} alt="" />
             </div>
 
-            <div className="py-6 lg:w-[450px] mx-auto">
+            <div className="py-2 lg:py-6 lg:w-[450px] mx-auto">
               <div className="h-full" hidden={activeStep != 1}>
                 <FormPersonalInfo />
               </div>

@@ -32,7 +32,7 @@ const FormSelectPlan = () => {
         You have the option of monthly or yearly billing.
       </div>
 
-      <div className="flex gap-4 w-full">
+      <div className="flex flex-col lg:flex-row lg:gap-4 w-full">
         {/* arcade */}
         <div className="py-2 basis-full">
           <PlanOption

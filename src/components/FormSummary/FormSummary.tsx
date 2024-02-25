@@ -31,14 +31,14 @@ const FormSummary = () => {
         Double-check everything looks OK before confirming.
       </div>
 
-      <div className="rounded-md py-4 px-8 bg-grey-veryLight text-[14px] mt-4">
+      <div className="rounded-md px-4 py-2 lg:py-4 lg:px-8 bg-grey-veryLight text-[14px] mt-4">
         <div className="flex justify-between items-center border-b border-grey/40 pb-4">
           <div>
             <span className="capitalize text-denim font-medium block my-2">
               <span>{selectedPlan}</span> <span>({duration})</span>
             </span>
             <button
-              className="text-grey hover:text-purple hover:underline cursor"
+              className="text-grey hover:text-purple underline cursor"
               onClick={() =>
                 dispatch({ type: "UPDATE_FORM_STEP", activeStep: 2 })
               }>
@@ -51,7 +51,7 @@ const FormSummary = () => {
         </div>
 
         {online && (
-          <div className="flex justify-between items-center my-4">
+          <div className="flex justify-between items-center my-2">
             <div className="text-grey">Online service</div>
             <div className="text-denim">
               +${onlinePrice}/{durationAbbv}
@@ -60,7 +60,7 @@ const FormSummary = () => {
         )}
 
         {storage && (
-          <div className="flex justify-between items-center my-4">
+          <div className="flex justify-between items-center my-2">
             <div className="text-grey">Larger storage</div>
             <div className="text-denim">
               +${storagePrice}/{durationAbbv}
@@ -68,7 +68,7 @@ const FormSummary = () => {
           </div>
         )}
         {profile && (
-          <div className="flex justify-between items-center my-4">
+          <div className="flex justify-between items-center my-2">
             <div className="text-grey">Customizable Profile</div>
             <div className="text-denim">
               +${profilePrice}/{durationAbbv}
@@ -77,9 +77,9 @@ const FormSummary = () => {
         )}
       </div>
 
-      <div className="flex justify-between items-center px-8 py-4 my-4">
+      <div className="flex justify-between items-center px-4 lg:px-8 my-4">
         <div className="text-grey text-[14px]">Total (per year)</div>
-        <div className="text-purple font-bold text-h5">
+        <div className="text-purple font-bold text-body lg:text-h5">
           ${total}/{durationAbbv}
         </div>
       </div>

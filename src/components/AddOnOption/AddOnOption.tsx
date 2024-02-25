@@ -16,16 +16,20 @@ const AddOnOption = ({
   return (
     <button
       onClick={() => handleClick(id, !checked)}
-      className={`flex w-full gap-4 p-6 items-center rounded-md border border-grey-light hover:border-purple ${checked ? "bg-grey-veryLight border-purple" : ""}`}>
+      className={`flex w-full gap-4 py-3 px-4 lg:p-6 items-center rounded-md border border-grey-light hover:border-purple ${checked ? "bg-grey-veryLight border-purple" : ""}`}>
       <span
         className={`inline-flex items-center justify-center h-[20px] w-[20px] rounded-md border ${checked ? "bg-purple" : "border-grey-light"}`}>
         <Image src={iconCheckmark} alt="" />
       </span>
       <span className="flex-grow text-start">
-        <span className="block text-denim font-medium">{title}</span>
-        <span className="block text-grey text-[14px]">{subtitle}</span>
+        <span className="block text-denim font-medium text-[14px] lg:text-body1">
+          {title}
+        </span>
+        <span className="block text-grey text-[12px] lg:text-[15px]">
+          {subtitle}
+        </span>
       </span>
-      <span className="text-[14px] text-purple">
+      <span className="text-[12px] lg:text-[14px] text-purple">
         +${price}/{DURATION_ABBV[duration]}
       </span>
     </button>
