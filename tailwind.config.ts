@@ -42,6 +42,10 @@ const config: Config = {
           light: "#D6D9E6",
         },
       },
+      fontFamily: {
+        heading: ["var(--app-font)", ...fontFamily.sans],
+        body: ["var(--app-font)", ...fontFamily.sans],
+      },
     },
   },
   plugins: [],
