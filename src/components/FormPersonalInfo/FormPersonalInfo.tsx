@@ -77,7 +77,7 @@ const FormPersonalInfo = () => {
         />
       </div>
 
-      <div className="fixed py-4 px-6 bottom-0 left-0 lg:static w-full flex justify-end mt-auto bg-white z-20">
+      <div className="fixed py-4 px-6 lg:px-0 bottom-0 left-0 lg:static w-full flex justify-end mt-auto bg-white z-20">
         <Button type="submit" color="denim">
           Next
         </Button>
