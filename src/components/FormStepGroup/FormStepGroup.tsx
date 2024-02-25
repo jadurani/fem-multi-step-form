@@ -10,7 +10,7 @@ const FormStepGroup = ({ activeStep }: Props) => {
   return (
     <div>
       {FORM_STEPS.map((fs, idx) => (
-        <div key={idx} className="px-2 inline md:block md:py-4">
+        <div key={idx} className="px-2 inline lg:block lg:py-4">
           <FormStep {...fs} isActive={fs.step == activeStep} />
         </div>
       ))}
