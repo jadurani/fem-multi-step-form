@@ -17,11 +17,11 @@ const FormPickAddOn = (props: PickAddOnProps) => {
   };
 
   return (
-    <div>
+    <div className="flex flex-col h-full">
       <div className="text-denim font-bold text-h4 md:text-h3">
         Pick add-ons
       </div>
-      <div className="text-grey">
+      <div className="text-grey mb-6">
         Add-ons help enhance your gaming experience.
       </div>
 
@@ -38,7 +38,7 @@ const FormPickAddOn = (props: PickAddOnProps) => {
         </div>
       ))}
 
-      <div className="flex justify-between">
+      <div className="fixed py-4 px-6 bottom-0 left-0 lg:static w-full flex justify-between mt-auto bg-white z-20">
         <Button
           style="clear"
           handleClick={() =>

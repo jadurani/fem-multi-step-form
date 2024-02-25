@@ -24,42 +24,44 @@ const FormSelectPlan = () => {
   };
 
   return (
-    <div>
+    <div className="flex flex-col h-full">
       <div className="text-denim font-bold text-h4 md:text-h3">
         Select your plan
       </div>
-      <div className="text-grey">
+      <div className="text-grey mb-6">
         You have the option of monthly or yearly billing.
       </div>
 
-      {/* arcade */}
-      <div className="py-2">
-        <PlanOption
-          checked={formData.selectedPlan === "arcade"}
-          id="arcade"
-          duration={formData.duration}
-          handleClick={(id, _) => setFormData(id)}
-        />
-      </div>
+      <div className="flex flex-col lg:flex-row lg:gap-4 w-full">
+        {/* arcade */}
+        <div className="py-2 basis-full">
+          <PlanOption
+            checked={formData.selectedPlan === "arcade"}
+            id="arcade"
+            duration={formData.duration}
+            handleClick={(id, _) => setFormData(id)}
+          />
+        </div>
 
-      {/* advanced */}
-      <div className="py-2">
-        <PlanOption
-          checked={formData.selectedPlan === "advanced"}
-          id="advanced"
-          duration={formData.duration}
-          handleClick={(id, _) => setFormData(id)}
-        />
-      </div>
+        {/* advanced */}
+        <div className="py-2 basis-full">
+          <PlanOption
+            checked={formData.selectedPlan === "advanced"}
+            id="advanced"
+            duration={formData.duration}
+            handleClick={(id, _) => setFormData(id)}
+          />
+        </div>
 
-      {/* pro */}
-      <div className="py-2">
-        <PlanOption
-          checked={formData.selectedPlan === "pro"}
-          id="pro"
-          duration={formData.duration}
-          handleClick={(id, _) => setFormData(id)}
-        />
+        {/* pro */}
+        <div className="py-2 basis-full">
+          <PlanOption
+            checked={formData.selectedPlan === "pro"}
+            id="pro"
+            duration={formData.duration}
+            handleClick={(id, _) => setFormData(id)}
+          />
+        </div>
       </div>
 
       {/* toggle */}
@@ -70,7 +72,7 @@ const FormSelectPlan = () => {
         />
       </div>
 
-      <div className="flex justify-between">
+      <div className="fixed py-4 px-6 bottom-0 left-0 lg:static w-full flex justify-between mt-auto bg-white z-20">
         <Button
           style="clear"
           handleClick={() =>
