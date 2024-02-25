@@ -12,7 +12,7 @@ function Button({
       <button
         type={type}
         onClick={handleClick}
-        className="text-grey hover:text-denim font-medium capitalize rounded-md py-3 px-5">
+        className="text-grey hover:text-denim font-medium capitalize rounded-md py-3">
         {children}
       </button>
     );

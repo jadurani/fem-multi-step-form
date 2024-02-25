@@ -23,22 +23,22 @@ const FormSummary = () => {
   }
 
   return (
-    <div>
+    <div className="flex flex-col h-full">
       <div className="text-denim font-bold text-h4 md:text-h3">
         Finishing up
       </div>
-      <div className="text-grey">
+      <div className="text-grey mb-6">
         Double-check everything looks OK before confirming.
       </div>
 
-      <div className="rounded-md p-2 bg-grey-veryLight text-[14px] mt-4">
-        <div className="flex justify-between items-center border-b border-grey/40 pb-2">
+      <div className="rounded-md py-4 px-8 bg-grey-veryLight text-[14px] mt-4">
+        <div className="flex justify-between items-center border-b border-grey/40 pb-4">
           <div>
-            <span className="capitalize text-denim font-medium block my-1">
+            <span className="capitalize text-denim font-medium block my-2">
               <span>{selectedPlan}</span> <span>({duration})</span>
             </span>
             <button
-              className="text-grey hover:text-purple cursor"
+              className="text-grey hover:text-purple hover:underline cursor"
               onClick={() =>
                 dispatch({ type: "UPDATE_FORM_STEP", activeStep: 2 })
               }>
@@ -51,7 +51,7 @@ const FormSummary = () => {
         </div>
 
         {online && (
-          <div className="flex justify-between items-center my-2">
+          <div className="flex justify-between items-center my-4">
             <div className="text-grey">Online service</div>
             <div className="text-denim">
               +${onlinePrice}/{durationAbbv}
@@ -60,7 +60,7 @@ const FormSummary = () => {
         )}
 
         {storage && (
-          <div className="flex justify-between items-center my-2">
+          <div className="flex justify-between items-center my-4">
             <div className="text-grey">Larger storage</div>
             <div className="text-denim">
               +${storagePrice}/{durationAbbv}
@@ -68,7 +68,7 @@ const FormSummary = () => {
           </div>
         )}
         {profile && (
-          <div className="flex justify-between items-center my-2">
+          <div className="flex justify-between items-center my-4">
             <div className="text-grey">Customizable Profile</div>
             <div className="text-denim">
               +${profilePrice}/{durationAbbv}
@@ -77,14 +77,14 @@ const FormSummary = () => {
         )}
       </div>
 
-      <div className="flex justify-between items-center px-2 py-4">
+      <div className="flex justify-between items-center px-8 py-4 my-4">
         <div className="text-grey text-[14px]">Total (per year)</div>
-        <div className="text-purple font-bold">
+        <div className="text-purple font-bold text-h5">
           ${total}/{durationAbbv}
         </div>
       </div>
 
-      <div className="flex justify-between">
+      <div className="flex justify-between mt-auto">
         <Button
           style="clear"
           handleClick={() =>

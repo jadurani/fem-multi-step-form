@@ -37,7 +37,7 @@ const FormPersonalInfo = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="flex flex-col">
+    <form onSubmit={handleSubmit} noValidate className="flex flex-col h-full">
       <div className="text-denim font-bold text-h4 md:text-h3">
         Personal Info
       </div>
